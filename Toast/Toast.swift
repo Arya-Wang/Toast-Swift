@@ -28,7 +28,7 @@ import ObjectiveC
 
 /**
  Toast is a Swift extension that adds toast notifications to the `UIView` object class.
- It is intended to be simple, lightweight, and easy to use. Most toast notifications 
+ It is intended to be simple, lightweight, and easy to use. Most toast notifications
  can be triggered with a single line of code.
  
  The `makeToast` methods create a new view and then display it as toast.
@@ -276,6 +276,23 @@ public extension UIView {
         guard objc_getAssociatedObject(self, &ToastKeys.activityView) as? UIView == nil else { return }
         
         let toast = createToastActivityView()
+        makeToastActivity(toast, point: point)
+    }
+    
+    /// 加载视图, 添加自定义view
+    /// - Parameter toast: 自定义view
+    /// - Parameter position: 位置
+    func showToastActivity(_ toast: UIView, _ position: ToastPosition){
+        guard objc_getAssociatedObject(self, &ToastKeys.activityView) as? UIView == nil else { return }
+        let point = position.centerPoint(forToast: toast, inSuperview: self)
+        makeToastActivity(toast, point: point)
+    }
+    
+    /// 加载视图, 添加自定义view
+    /// - Parameter toast: 自定义view
+    /// - Parameter point: 位置点
+    func showToastActivity(_ toast: UIView, _ point: CGPoint) {
+        guard objc_getAssociatedObject(self, &ToastKeys.activityView) as? UIView == nil else { return }
         makeToastActivity(toast, point: point)
     }
     

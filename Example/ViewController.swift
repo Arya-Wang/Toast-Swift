@@ -29,8 +29,6 @@ class ViewController: UITableViewController {
     
     fileprivate var showingActivity = false
     
-    
-    
     fileprivate struct ReuseIdentifiers {
         static let switchCellId = "switchCell"
         static let exampleCellId = "exampleCell"
@@ -79,7 +77,7 @@ extension ViewController {
         if section == 0 {
             return 2
         } else {
-            return 11
+            return 13
         }
     }
     
@@ -151,6 +149,8 @@ extension ViewController {
             case 8: cell.textLabel?.text = showingActivity ? "Hide toast activity" : "Show toast activity"
             case 9: cell.textLabel?.text = "Hide toast"
             case 10: cell.textLabel?.text = "Hide all toasts"
+            case 11: cell.textLabel?.text = "添加自定义加载视图"
+            case 12: cell.textLabel?.text = "隐藏自定义加载视图"
             default: cell.textLabel?.text = nil
             }
             
@@ -221,6 +221,15 @@ extension ViewController {
         case 10:
             // Hide all toasts
             self.navigationController?.view.hideAllToasts()
+        case 11:
+            // Show a custom view as loading
+            let customView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 400.0))
+            customView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
+            customView.backgroundColor = .lightBlue
+            self.navigationController?.view.showToastActivity(customView, .center)
+        case 12:
+            // hidden a custom view as loading
+            self.navigationController?.view.hideToastActivity()
         default:
             break
         }
