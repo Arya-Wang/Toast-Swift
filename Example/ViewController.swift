@@ -29,6 +29,8 @@ class ViewController: UITableViewController {
     
     fileprivate var showingActivity = false
     
+    
+    
     fileprivate struct ReuseIdentifiers {
         static let switchCellId = "switchCell"
         static let exampleCellId = "exampleCell"
