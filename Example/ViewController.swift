@@ -198,6 +198,7 @@ extension ViewController {
             // Show a custom view as toast
             let customView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 80.0, height: 400.0))
             customView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
+            customView.isUserInteractionEnabled = false
             customView.backgroundColor = .lightBlue
             self.navigationController?.view.showToast(customView, duration: 2.0, position: .center)
         case 7:
